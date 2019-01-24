@@ -3,6 +3,16 @@ package edu.eci;
 import java.net.*;
 import java.io.*;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.StringTokenizer;
+
+import java.net.*;
+import java.io.*;
+
 public class EchoServer {
 	public static void main(String[] args) throws IOException {
 		ServerSocket serverSocket = null;
@@ -23,17 +33,32 @@ public class EchoServer {
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		String inputLine, outputLine;
 		while ((inputLine = in.readLine()) != null) {
-			System.out.println("Mensaje:" + inputLine);
-			outputLine = ("Respuesta" + inputLine);
-			out.println(outputLine);
+			double result;
+			StringTokenizer st = new StringTokenizer(inputLine);
+			String operation = st.nextToken();
+			int oprnd1 = Integer.parseInt(st.nextToken());
+			if (operation.equals("cos")) {
+				result = Math.cos(oprnd1*(Math.PI/180.0));
+			}
+
+			else if (operation.equals("sin")) {
+				result = Math.sin(oprnd1*(Math.PI/180.0));
+			} else  {
+				result = Math.tan(oprnd1*(Math.PI/180.0));
+			} 
+			System.out.println("Sending the result...");
+
+			// send the result back to the client.
+			
+
+			outputLine = "Respuesta" + result;
+			out.println(Double.toString(result));
 			if (outputLine.equals("Respuestas: Bye."))
 				break;
 		}
+		out.close();
+		in.close();
 		clientSocket.close();
 		serverSocket.close();
-		if (clientSocket.isClosed() && serverSocket.isClosed()) {
-			out.close();
-			in.close();
-		}
 	}
 }

@@ -3,6 +3,17 @@ package edu.eci;
 import java.io.*;
 import java.net.*;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+import java.io.*;
+import java.net.*;
+
 public class EchoClient {
 	public static void main(String[] args) throws IOException {
 		Socket echoSocket = null;
@@ -26,12 +37,13 @@ public class EchoClient {
 
 		while ((userInput = stdIn.readLine()) != null) {
 			out.println(userInput);
-			System.out.println("echo: " + in.readLine());
+			System.out.println("fun: " + in.readLine());
 
 		}
 		out.close();
 		in.close();
 		stdIn.close();
 		echoSocket.close();
+
 	}
 }
