@@ -32,23 +32,38 @@ public class EchoServer {
 		PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		String inputLine, outputLine;
+		Double result = null;
+		String operando = null;
+		Integer var = null;
+//		Fragmento de codigo hecho por Javier Vargas y Sebastian Goenaga
 		while ((inputLine = in.readLine()) != null) {
-			double result;
-			StringTokenizer st = new StringTokenizer(inputLine);
-			String operation = st.nextToken();
-			int oprnd1 = Integer.parseInt(st.nextToken());
-			if (operation.equals("cos")) {
-				result = Math.cos(oprnd1 * (Math.PI / 180.0));
+			StringTokenizer stdInTok = new StringTokenizer(inputLine);
+
+			String oper = stdInTok.nextToken();
+			boolean flag;
+
+			try {
+				var = Integer.parseInt(oper);
+
+				flag = true;
+			} catch (Exception e) {
+				flag = false;
+				var = Integer.parseInt(stdInTok.nextToken());
+				operando = oper;
 			}
 
-			else if (operation.equals("sin")) {
-				result = Math.sin(oprnd1 * (Math.PI / 180.0));
-			} else {
-				result = Math.tan(oprnd1 * (Math.PI / 180.0));
+			if (flag == true) {
+				if (operando.equals("cos")) {
+					result = Math.cos(Math.toRadians(var));
+				} else if (operando.equals("sin")) {
+					result = Math.sin(Math.toRadians(var));
+				} else if (operando.equals("tan")) {
+					result = Math.tan(Math.toRadians(var));
+				}
 			}
 			System.out.println("Mensaje: " + inputLine);
 
-			outputLine = "Respuesta: " + Double.toString(result);
+			outputLine = "Respuesta: " + result;
 			out.println(outputLine);
 			if (outputLine.equals("Respuesta:  "))
 				break;
