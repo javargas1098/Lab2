@@ -9,8 +9,8 @@ public class Browser {
 		Scanner sc =new Scanner(System.in);
 		String url;
 		url = sc.nextLine();
-		URL google = new URL(url);
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(google.openStream()))) {
+		URL paginas = new URL(url);
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(paginas.openStream()))) {
 			BufferedWriter wr = new BufferedWriter(new FileWriter("pruebas.html"));
 			String inputLine = null;
 			while ((inputLine = reader.readLine()) != null) {

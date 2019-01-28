@@ -1,4 +1,4 @@
-package edu.eci;
+package edu.eci.sockets.trigonometricas;
 
 import java.net.*;
 import java.io.*;
@@ -38,22 +38,19 @@ public class EchoServer {
 			String operation = st.nextToken();
 			int oprnd1 = Integer.parseInt(st.nextToken());
 			if (operation.equals("cos")) {
-				result = Math.cos(oprnd1*(Math.PI/180.0));
+				result = Math.cos(oprnd1 * (Math.PI / 180.0));
 			}
 
 			else if (operation.equals("sin")) {
-				result = Math.sin(oprnd1*(Math.PI/180.0));
-			} else  {
-				result = Math.tan(oprnd1*(Math.PI/180.0));
-			} 
-			System.out.println("Sending the result...");
+				result = Math.sin(oprnd1 * (Math.PI / 180.0));
+			} else {
+				result = Math.tan(oprnd1 * (Math.PI / 180.0));
+			}
+			System.out.println("Mensaje: " + inputLine);
 
-			// send the result back to the client.
-			
-
-			outputLine = "Respuesta" + result;
-			out.println(Double.toString(result));
-			if (outputLine.equals("Respuestas: Bye."))
+			outputLine = "Respuesta: " + Double.toString(result);
+			out.println(outputLine);
+			if (outputLine.equals("Respuesta:  "))
 				break;
 		}
 		out.close();

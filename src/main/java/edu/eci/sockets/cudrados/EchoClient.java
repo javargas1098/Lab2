@@ -1,15 +1,4 @@
-package edu.eci;
-
-import java.io.*;
-import java.net.*;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Scanner;
+package edu.eci.sockets.cudrados;
 
 import java.io.*;
 import java.net.*;
@@ -21,7 +10,7 @@ public class EchoClient {
 		BufferedReader in = null;
 
 		try {
-			echoSocket = new Socket("127.0.0.1", 35000);
+			echoSocket = new Socket("127.0.0.1", 35002);
 			out = new PrintWriter(echoSocket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 
@@ -37,7 +26,7 @@ public class EchoClient {
 
 		while ((userInput = stdIn.readLine()) != null) {
 			out.println(userInput);
-			System.out.println("fun: " + in.readLine());
+			System.out.println("echo: " + in.readLine());
 
 		}
 		out.close();
