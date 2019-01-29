@@ -50,9 +50,11 @@ public class EchoServer {
 				flag = false;
 				var = Integer.parseInt(stdInTok.nextToken());
 				operando = oper;
+				System.out.println(var);
+				System.out.println(operando);
 			}
 
-			if (flag == true) {
+			if (flag == true || flag==false) {
 				if (operando.equals("cos")) {
 					result = Math.cos(Math.toRadians(var));
 				} else if (operando.equals("sin")) {

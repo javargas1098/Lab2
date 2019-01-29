@@ -41,6 +41,8 @@ public class HttpServerNoConcurrente {
 						String[] tempArray = inputLine.split(" ");
 						String path = System.getProperty("user.dir") + "/web" + tempArray[1];
 						BufferedReader br = null;
+//						Fragmento de codigo hecho por Javier Vargas y Sebastian Goenaga
+
 						try {
 							br = new BufferedReader(new FileReader(path));
 

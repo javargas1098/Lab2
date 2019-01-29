@@ -29,7 +29,7 @@ public class EchoServer {
 			int oprnd1 = Integer.parseInt(st.nextToken());
 			result = Math.pow(oprnd1, 2);
 			System.out.println("Mensaje: " + inputLine);
-			outputLine = "Respuesta: " + Double.toString(result);
+			outputLine = "Respuesta: " + result;
 			out.println(outputLine);
 			if (outputLine.equals("Respuesta:  "))
 				break;
