@@ -29,6 +29,7 @@ and then the server show your content.
 ### Exercise 6 
 In this exercise i create a http server that recibe multiples request and return all files 
   - ![foto](5.png)
+  - ![foto](51.png)
 ### Exercise 7
 In this exercise i implements a datagrams unis threads and i implements a client-server that reponds the actual time and the program update every five minutes.
   - ![foto](6.png)
